@@ -15,10 +15,12 @@ tmp/**/*
 *~.nib
 local.properties
 .loadpath
+CarTracker/bin
 
 # External tool builders
 .externalToolBuilders/
 
 # Locally stored "Eclipse launch configurations"
 *.launch
+
 
