@@ -9,6 +9,7 @@
 bin/**
 tmp/**
 tmp/**/*
+*.settings/
 *.tmp
 *.bak
 *.swp

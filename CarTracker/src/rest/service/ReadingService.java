@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import dataConnect.ReadingOperations;
 import dataConnect.mongoConnect;;
 
 @Path("rest")
@@ -27,23 +28,24 @@ public class ReadingService {
 	@Path("/reading")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response crunchifyREST(InputStream incomingData) {
-		StringBuilder crunchifyBuilder = new StringBuilder();
+		StringBuilder inputString = new StringBuilder();
 		try {
 			BufferedReader in = new BufferedReader(new InputStreamReader(incomingData));
 			String line = null;
 			while ((line = in.readLine()) != null) {
-				crunchifyBuilder.append(line);
+				inputString.append(line);
 			}
 		} catch (Exception e) {
 			System.out.println("Error Parsing: - ");
 		}
 		
-		System.out.println("Data Received: " + crunchifyBuilder.toString());
-		mongoConnect dbCon = new mongoConnect();
-		dbCon.insertReading(crunchifyBuilder.toString());
+		System.out.println("Data Received: " + inputString.toString());
+		ReadingOperations readOp = new ReadingOperations();
+		readOp.insertReading(inputString.toString());
+		readOp.verifyReading(inputString.toString());
 
 		// return HTTP respons e 200 in case of success
-		return Response.status(200).entity(crunchifyBuilder.toString()).build();
+		return Response.status(200).entity(inputString.toString()).build();
 	}
 	
 }
