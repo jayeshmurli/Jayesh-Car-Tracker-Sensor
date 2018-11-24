@@ -1,6 +1,14 @@
 # Jayesh Iyer - IoT Lab Vehicle Tracker Sensor Application
 IoT Lab Vehicle Sensor Application to process vehicle readings and generate alerts for abormal values
 
+## Built With 
+- [Eclipse](https://www.eclipse.org/ide/)
+- [MongoDB](https://www.mongodb.com/what-is-mongodb)
+- [Apache Tomcat](https://tomcat.apache.org/download-80.cgi)
+
+## Versioning 
+This whole project was maintained using [Github](https://github.com/) a Versioning tool.
+
 ## Coding Style
 - Insert Vehicle Information. <br>
   Vehicle informations are inserted or updated using below REST API with method PUT. <br>
@@ -21,16 +29,6 @@ IoT Lab Vehicle Sensor Application to process vehicle readings and generate aler
 - Get Vehicle Specific Alerts. <br>
   All alerts for a specific vehicle are retreived using below REST API with method GET. <br>
   http://localhost:8080/CarTracker/rest/alert/vehicle/{vin}
-
-  
-
-## Built With 
-- [Eclipse](https://www.eclipse.org/ide/)
-- [MongoDB](https://www.mongodb.com/what-is-mongodb)
-- [Apache Tomcat](https://tomcat.apache.org/download-80.cgi)
-
-## Versioning 
-This whole project was maintained using [Github](https://github.com/) a Versioning tool.
 
 ## Prerequisite
  * Install [Java 1.7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or latest.
