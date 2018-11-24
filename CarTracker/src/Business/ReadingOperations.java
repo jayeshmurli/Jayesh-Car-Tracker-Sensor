@@ -14,6 +14,7 @@ import org.json.JSONObject;
 
 public class ReadingOperations {
 
+	//Function to get data from POST request in JSON format 
 	public void insertReading(String input){
 
 		JSONObject jobj = new JSONObject(input);
@@ -49,7 +50,8 @@ public class ReadingOperations {
 		dbCon.disconnect();
 		
 	}
-		
+	
+	//Function to check if reading qualifies for any alert
 	public void verifyReading(String input){
 		int redlineRpm = 0;
 	    Double maxFuelVolume = 0.0;
@@ -114,6 +116,7 @@ public class ReadingOperations {
 			return false;
 	}
 	
+	//Function to add alert details in database
 	public void insertAlert(String priority, JSONObject jobj){
 		
 	    Document alertDoc = new Document("vin", jobj.get("vin"))
@@ -154,6 +157,7 @@ public class ReadingOperations {
 		collection.insertOne(alertDoc);
 	}
 	
+	//Function to read all HIGH priority alerts in the last two hours
 	public String getAlertDocument(){
 		Date now = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -194,7 +198,7 @@ public class ReadingOperations {
 	    return output + "]";
 	}
 	
-	
+	//Function to retreive all alerts for a particular vehicle
 	public String getVehicleAlertDocument(String vehicle){
 		
 		mongoConnect dbCon = new mongoConnect();

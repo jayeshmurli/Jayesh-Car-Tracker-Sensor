@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import Business.VehicleOperations;
 
 @Path("rest")
+//Class create web service at path rest/reading
 public class VehicleService {
 
 	@PUT

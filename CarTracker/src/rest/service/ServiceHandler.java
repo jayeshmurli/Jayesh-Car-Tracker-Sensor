@@ -9,6 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("rest")
+//Class create web service at path rest/reading
 public class ServiceHandler {
 	
 	@GET

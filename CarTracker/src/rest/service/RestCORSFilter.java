@@ -7,6 +7,7 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 
 @Provider
+//Class to handle CORS filter from external web application like mocker
 public class RestCORSFilter implements ContainerResponseFilter {
 
     @Override

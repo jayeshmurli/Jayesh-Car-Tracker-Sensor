@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 
 import Business.ReadingOperations;
 
+//Class create web service at path rest/reading
 @Path("rest")
 public class ReadingService {
 
@@ -36,7 +37,7 @@ public class ReadingService {
 		readOp.insertReading(inputString.toString());
 		readOp.verifyReading(inputString.toString());
 
-		// return HTTP respons e 200 in case of success
+		// return HTTP response 200 in case of success
 		return Response.status(200).entity(inputString.toString()).build();
 	}
 	

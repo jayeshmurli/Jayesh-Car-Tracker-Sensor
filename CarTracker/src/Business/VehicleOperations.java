@@ -11,8 +11,7 @@ import org.json.JSONObject;
 
 public class VehicleOperations {
 
-	
-	
+	//Function to read vehicle data from request and form JSON data for database insertion
 	public void insertVehicle(String inputs){
 	    
 		mongoConnect dbCon = new mongoConnect();
@@ -51,7 +50,7 @@ public class VehicleOperations {
 		dbCon.disconnect();
 	}
 	
-	
+	//Function to retreive detailed information for all vehicles
 	public String getVehicleDocument(){
 		mongoConnect dbCon = new mongoConnect();
 		

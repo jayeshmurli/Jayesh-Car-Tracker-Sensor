@@ -8,7 +8,8 @@ import com.mongodb.client.MongoDatabase;
 public class mongoConnect {
 
 private MongoClient mongoClient;
-	
+
+	//Function to connect mongoDB
 	public MongoDatabase connect(){
 		// Creating a Mongo client 
 		this.mongoClient = MongoClients.create("mongodb://admin:nu1472726@localhost/Sensor?authSource=admin&ssl=false");
@@ -18,6 +19,7 @@ private MongoClient mongoClient;
 		return database;
 	}
 	
+	//Function to disconnect MongoDB
 	public void disconnect(){
 		this.mongoClient.close();
 	}

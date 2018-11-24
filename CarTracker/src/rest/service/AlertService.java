@@ -9,6 +9,7 @@ import javax.ws.rs.core.Response;
 
 import Business.ReadingOperations;
 
+//Class create web service at path rest/reading
 @Path("rest")
 public class AlertService {
 	
