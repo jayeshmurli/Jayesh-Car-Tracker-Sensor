@@ -2,24 +2,24 @@
 IoT Lab Vehicle Sensor Application to process vehicle readings and generate alerts for abormal values
 
 ## Coding Style
-- Insert Vehicle Information
-  Vehicle informations are inserted or updated using below REST API with method PUT.
+- Insert Vehicle Information. <br>
+  Vehicle informations are inserted or updated using below REST API with method PUT. <br>
   http://localhost:8080/CarTracker/rest/vehicle
 
-- Insert Vehicle Readins
-  Vehicle Readings are inserted using below REST API with method PUT.
+- Insert Vehicle Readings. <br>
+  Vehicle Readings are inserted using below REST API with method PUT. <br>
   http://localhost:8080/CarTracker/rest/reading
 
-- Get Vehicle Information
-  Vehicle informations are retreived using below REST API with method GET.
+- Get Vehicle Informations. <br>
+  Vehicle informations are retreived using below REST API with method GET. <br>
   http://localhost:8080/CarTracker/rest/vehicle
 
-- Get All Vehicle HIGH Priority Alerts
-  Vehicle Alerts that have Priority HIGH are retreived using below REST API with method GET.
+- Get All Vehicle HIGH Priority Alerts. <br>
+  Vehicle Alerts that have Priority HIGH are retreived using below REST API with method GET. <br>
   http://localhost:8080/CarTracker/rest/alert
 
-- Get Vehicle Specific Alerts
-  All alerts for a specific vehicle are retreived using below REST API with method GET.
+- Get Vehicle Specific Alerts. <br>
+  All alerts for a specific vehicle are retreived using below REST API with method GET. <br>
   http://localhost:8080/CarTracker/rest/alert/vehicle/{vin}
 
   
@@ -40,9 +40,9 @@ This whole project was maintained using [Github](https://github.com/) a Versioni
  * Download or Clone Repository to local directory `git clone URL`.
  * Open Command Prompt and navigate to local directory `cd <localdirectory-path>`.
  * Open the project using Eclipse IDE.
- * Install maven dependencies on Eclipse IDE. 
+ * Install maven dependencies on Eclipse IDE. <br>
     Right Click on Project >> Run As >> Maven Build
- * Start MongoDB server and import given database.
+ * Start MongoDB server and import given database. <br>
     `mongorestore -d Sensor <localdirectory-path>/Sensor/ -u username -p password`
  * Start the Apache server
  * Use provided REST APIs to test the application.
