@@ -10,32 +10,32 @@ IoT Lab Vehicle Sensor Application to process vehicle readings and generate aler
 This whole project was maintained using [Github](https://github.com/) a Versioning tool.
 
 ## Coding Style
-- Insert Vehicle Information. <br>
+- **Insert Vehicle Information.** <br>
   Vehicle informations are inserted or updated using below REST API with method PUT. <br>
   ```
   PUT http://localhost:8080/CarTracker/rest/vehicle
   ```
 
-
-- Insert Vehicle Readings. <br>
+- **Insert Vehicle Readings.** <br>
   Vehicle Readings are inserted using below REST API with method PUT. <br>
   ```
   POST http://localhost:8080/CarTracker/rest/reading
   ```
 
-- Get Vehicle Informations. <br>
+- **Get Vehicle Informations.** <br>
   Vehicle informations are retreived using below REST API with method GET. <br>
   ```
   GET http://localhost:8080/CarTracker/rest/vehicle
   ```
 
-- Get All Vehicle HIGH Priority Alerts. <br>
+- **Get All Vehicle HIGH Priority Alerts.** <br>
   Vehicle Alerts that have Priority HIGH are retreived using below REST API with method GET. <br>
+  _Note : Time conversion is implied in the workflow to convert current time from EST to UTC._
   ```
   GET http://localhost:8080/CarTracker/rest/alert
   ```
 
-- Get Vehicle Specific Alerts. <br>
+- **Get Vehicle Specific Alerts.** <br>
   All alerts for a specific vehicle are retreived using below REST API with method GET. <br>
   ```
   GET http://localhost:8080/CarTracker/rest/alert/vehicle/{vin}
