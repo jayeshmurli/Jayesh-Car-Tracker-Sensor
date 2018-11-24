@@ -12,23 +12,34 @@ This whole project was maintained using [Github](https://github.com/) a Versioni
 ## Coding Style
 - Insert Vehicle Information. <br>
   Vehicle informations are inserted or updated using below REST API with method PUT. <br>
-  http://localhost:8080/CarTracker/rest/vehicle
+  ```
+  PUT http://localhost:8080/CarTracker/rest/vehicle
+  ```
+
 
 - Insert Vehicle Readings. <br>
   Vehicle Readings are inserted using below REST API with method PUT. <br>
-  http://localhost:8080/CarTracker/rest/reading
+  ```
+  POST http://localhost:8080/CarTracker/rest/reading
+  ```
 
 - Get Vehicle Informations. <br>
   Vehicle informations are retreived using below REST API with method GET. <br>
-  http://localhost:8080/CarTracker/rest/vehicle
+  ```
+  GET http://localhost:8080/CarTracker/rest/vehicle
+  ```
 
 - Get All Vehicle HIGH Priority Alerts. <br>
   Vehicle Alerts that have Priority HIGH are retreived using below REST API with method GET. <br>
-  http://localhost:8080/CarTracker/rest/alert
+  ```
+  GET http://localhost:8080/CarTracker/rest/alert
+  ```
 
 - Get Vehicle Specific Alerts. <br>
   All alerts for a specific vehicle are retreived using below REST API with method GET. <br>
-  http://localhost:8080/CarTracker/rest/alert/vehicle/{vin}
+  ```
+  GET http://localhost:8080/CarTracker/rest/alert/vehicle/{vin}
+  ```
 
 ## Prerequisite
  * Install [Java 1.7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or latest.
