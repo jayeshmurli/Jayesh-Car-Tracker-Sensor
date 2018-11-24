@@ -1,15 +1,8 @@
-package dataConnect;
+package Business;
 
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.*;
-import static com.mongodb.client.model.Filters.*;
-
-import java.util.ArrayList;
-import java.util.Iterator;
 
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -29,7 +22,7 @@ public class VehicleOperations {
 	    System.out.println("Connected success ::"); 
 	    
 	    //Accessing the desired collection
-	    MongoCollection<Document> collection = database.getCollection("vehicleData");
+	    MongoCollection<Document> collection = database.getCollection("vehicles");
 	    
 	    JSONArray vehicleArray = new JSONArray(inputs);
 		
@@ -59,14 +52,14 @@ public class VehicleOperations {
 	}
 	
 	
-	public String getVehicleDocument(String collectionName){
+	public String getVehicleDocument(){
 		mongoConnect dbCon = new mongoConnect();
 		
 	    // Accessing the database 
 	    MongoDatabase database = dbCon.connect();
 	    System.out.println("Connected success ::");
 	    
-	    MongoCollection<Document> collection = database.getCollection(collectionName);
+	    MongoCollection<Document> collection = database.getCollection("vehicles");
 
 	    FindIterable<Document> vehicleData = collection.find();
 	    String output = "[";

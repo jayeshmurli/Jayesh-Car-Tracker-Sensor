@@ -13,7 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import dataConnect.VehicleOperations;
+import Business.VehicleOperations;
 
 @Path("rest")
 public class VehicleService {
@@ -37,7 +37,7 @@ public class VehicleService {
 		VehicleOperations vehicleOp = new VehicleOperations();
 		vehicleOp.insertVehicle(inputString.toString());
 		
-		// return HTTP respons e 200 in case of success
+		// return HTTP response 200 in case of success
 		return Response.status(200).entity(inputString.toString()).build();
 	}
 	
@@ -47,7 +47,7 @@ public class VehicleService {
 	public Response getVehicle() {
 		
 		VehicleOperations vehicleOp = new VehicleOperations();		
-		String output = vehicleOp.getVehicleDocument("vehicleData");
+		String output = vehicleOp.getVehicleDocument();
 		
 		// return HTTP response 200 in case of success
 		return Response.ok(output, MediaType.APPLICATION_JSON).build();	

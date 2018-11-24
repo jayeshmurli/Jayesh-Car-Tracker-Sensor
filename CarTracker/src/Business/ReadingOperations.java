@@ -1,22 +1,15 @@
-package dataConnect;
+package Business;
 
-import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.*;
 import static com.mongodb.client.model.Filters.*;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 
 import org.bson.Document;
-import org.bson.conversions.Bson;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ReadingOperations {
@@ -49,7 +42,7 @@ public class ReadingOperations {
 		MongoDatabase database = dbCon.connect();
 		System.out.println("Connected success ::"); 
 		    
-		MongoCollection<Document> collection = database.getCollection("readingData");
+		MongoCollection<Document> collection = database.getCollection("readings");
 		//System.out.println("Collection count : " + collection.count());
 		    
 		collection.insertOne(readingDoc);		    
@@ -66,16 +59,14 @@ public class ReadingOperations {
 		JSONObject jobj = new JSONObject(input);
 	    JSONObject jobj2 = new JSONObject(jobj.get("tires").toString());
 	    
-	    String vin = (String)jobj.get("vin");
-	    
+	    String vin = (String)jobj.get("vin");	    
 	    mongoConnect dbCon = new mongoConnect();
 				
 	    // Accessing the database 
 	    MongoDatabase database = dbCon.connect();
 	    System.out.println("Connected success ::");
-	     
-	    
-	    MongoCollection<Document> collection = database.getCollection("vehicleData");
+	     	    
+	    MongoCollection<Document> collection = database.getCollection("vehicles");
 	    FindIterable<Document> vehicleData = collection.find(eq("vin", vin));
 	    
 	    for (Document doc : vehicleData) {
@@ -98,8 +89,7 @@ public class ReadingOperations {
 	    	alertPriority = "LOW";
 	    	alertType = "Tire Pressure Abnormal";
 	    	insertAlert(alertPriority,jobj);
-	    }
-	    	    
+	    }	    	    
 	    dbCon.disconnect();
 	}
 	
@@ -160,22 +150,20 @@ public class ReadingOperations {
 	    System.out.println("Connected success ::");
 	    
 	    //Accessing the collection
-	    MongoCollection<Document> collection = database.getCollection("alertData");	    
+	    MongoCollection<Document> collection = database.getCollection("alerts");	    
 		collection.insertOne(alertDoc);
 	}
 	
 	public String getAlertDocument(){
 		Date now = new Date();
 		Calendar cal = Calendar.getInstance();
-		// remove next line if you're always using the current time.
 		cal.setTime(now);
 		//Add extra 5 hours for GMT to EDT conversion
 		cal.add(Calendar.HOUR, 3);
 		Date newDate = cal.getTime();
 	    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 	    Date alertDate = new Date();
-	    
-		
+	    		
 		System.out.println("Threshold time is : " + newDate.toString());
 		mongoConnect dbCon = new mongoConnect();
 		
@@ -183,8 +171,7 @@ public class ReadingOperations {
 	    MongoDatabase database = dbCon.connect();
 	    System.out.println("Connected success ::");
 	    
-	    MongoCollection<Document> collection = database.getCollection("alertData");
-	    Document DateFilter = new Document("timestamp", new Document("$gt",newDate));
+	    MongoCollection<Document> collection = database.getCollection("alerts");
 	    
 	    FindIterable<Document> alertDoc = collection.find();
 	    System.out.println("Total collection : " + collection.count() + " and filter count : " );
@@ -192,7 +179,6 @@ public class ReadingOperations {
 	    for(Document doc : alertDoc){
 	    	try{
 	    		alertDate = simpleDateFormat.parse(doc.getString("timestamp"));
-	    		System.out.println(alertDate.toString());
 	    	}
 	    	catch(Exception e){
 	    		e.printStackTrace();
@@ -208,16 +194,16 @@ public class ReadingOperations {
 	    return output + "]";
 	}
 	
+	
 	public String getVehicleAlertDocument(String vehicle){
-		
 		
 		mongoConnect dbCon = new mongoConnect();
 		
-	    // Accessing the database
+	    // Accessing the database\
 	    MongoDatabase database = dbCon.connect();
 	    System.out.println("Connected success ::");
 	    
-	    MongoCollection<Document> collection = database.getCollection("alertData");
+	    MongoCollection<Document> collection = database.getCollection("alerts");
 	    
 	    FindIterable<Document> alertDoc = collection.find(eq("vin", vehicle));
 	    System.out.println("Total collection : " + collection.count() + " and filter count : " );
@@ -226,8 +212,7 @@ public class ReadingOperations {
 	    	if(output == "[")
 	    		output = output + doc.toJson();
 	    	else
-	    		output = output + "," + doc.toJson();
-	    	
+	    		output = output + "," + doc.toJson();	    	
 	    }
 	    return output + "]";
 	}

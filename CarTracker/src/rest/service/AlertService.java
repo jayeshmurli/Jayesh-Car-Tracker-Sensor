@@ -1,24 +1,13 @@
 package rest.service;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import dataConnect.ReadingOperations;
-import dataConnect.mongoConnect;
+import Business.ReadingOperations;
 
 @Path("rest")
 public class AlertService {
@@ -31,7 +20,7 @@ public class AlertService {
 		ReadingOperations readOp = new ReadingOperations();
 		String output = readOp.getAlertDocument();
 		
-		// return HTTP respons e 200 in case of success
+		// return HTTP response 200 in case of success
 		return Response.ok(output, MediaType.APPLICATION_JSON).build();	
 	}
 
@@ -43,7 +32,7 @@ public class AlertService {
 		ReadingOperations readOp = new ReadingOperations();
 		String output = readOp.getVehicleAlertDocument(vin);
 		
-		// return HTTP respons e 200 in case of success
+		// return HTTP response 200 in case of success
 		return Response.ok(output, MediaType.APPLICATION_JSON).build();	
 	}
 }
